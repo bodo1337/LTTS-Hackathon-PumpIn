@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
 
 import { TranslateService } from '@ngx-translate/core';
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
 
 export interface Slide {
   title: string;
@@ -18,6 +20,7 @@ export class TutorialPage {
   slides: Slide[];
   showSkip = true;
   dir: string = 'ltr';
+  @ViewChild('slides') slides2: Slides;
 
   constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform) {
     this.dir = platform.dir();
@@ -49,12 +52,21 @@ export class TutorialPage {
         ];
       });
   }
+  
+  ngAfterViewInit() {
+    console.log('Values on ngAfterViewInit():');
+    console.log("primaryColorSample:", this.slides2);
+  }  
 
   startApp() {
-    this.navCtrl.setRoot('WelcomePage', {}, {
+    this.navCtrl.setRoot('ListMasterPage', {}, {
       animate: true,
       direction: 'forward'
     });
+  }
+
+  nextSlide() {
+    this.slides2.slideNext();
   }
 
   onSlideChangeStart(slider) {

@@ -1,24 +1,38 @@
 <ion-header no-shadow>
   <ion-navbar>
-    <ion-buttons end *ngIf="showSkip">
-      <button ion-button (click)="startApp()" color="primary">{{ 'TUTORIAL_SKIP_BUTTON' | translate}}</button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content no-bounce>
-  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
-    <ion-slide *ngFor="let slide of slides">
-      <img [src]="slide.image" class="slide-image" />
-      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
-      <p [innerHTML]="slide.description"></p>
+  <ion-slides pager="true" #slides>
+    <ion-slide>
+      <img src="assets/img/pic1.jpg" class="slide-image" />
+      <h2 class="slide-title">Do you drive yourself to the commute?</h2>
+      <button ion-button color="primary" (click)="nextSlide()" block>Yes</button>
+      <button ion-button color="primary" (click)="nextSlide()" block>No</button>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/img/pic1.jpg" class="slide-image" />
+      <h2 class="slide-title">How long does it take you to commute?</h2>
+      <button ion-button color="primary" block (click)="nextSlide()">20min or less</button>
+      <button ion-button color="primary" block (click)="nextSlide()">30min</button>
+      <button ion-button color="primary" block (click)="nextSlide()">40min</button>
+      <button ion-button color="primary" block (click)="nextSlide()">50min or more</button>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/img/pic1.jpg" class="slide-image" />
+      <h2 class="slide-title">How likely you consider change to U-Bahn/S-Bahn?</h2>
+      <button ion-button color="primary" block (click)="nextSlide()">0</button>
+      <button ion-button color="primary" block (click)="nextSlide()">1</button>
+      <button ion-button color="primary" block (click)="nextSlide()">2</button>
+      <button ion-button color="primary" block (click)="nextSlide()">3</button>
+      <button ion-button color="primary" block (click)="nextSlide()">4</button>
     </ion-slide>
     <ion-slide>
       <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />
-      <h2 class="slide-title">{{ 'TUTORIAL_SLIDE4_TITLE' | translate }}</h2>
-      <button ion-button icon-end large clear (click)="startApp()">
-        {{ 'TUTORIAL_CONTINUE_BUTTON' | translate }}
-        <ion-icon name="arrow-forward"></ion-icon>
+      <h2 class="slide-title">Good Job!</h2>
+      <button ion-button large (click)="startApp()">
+        Collect Points
       </button>
     </ion-slide>
   </ion-slides>

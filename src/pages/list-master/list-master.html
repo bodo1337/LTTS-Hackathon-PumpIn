@@ -1,35 +1,28 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
-
-    <ion-buttons end>
-      <button ion-button icon-only (click)="addItem()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
+    <ion-title>Overview</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
-
-  <ion-list>
-    <ion-item-sliding *ngFor="let item of currentItems">
-      <button ion-item (click)="openItem(item)">
-        <ion-avatar item-start>
-          <img [src]="item.profilePic" />
-        </ion-avatar>
-        <h2>{{item.name}}</h2>
-        <p>{{item.about}}</p>
-        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
-      </button>
-
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(item)">
-          {{ 'DELETE_BUTTON' | translate }}
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+  <ion-row>
+    <ion-col size="6" class="survey" (click)="openSurvey()">
+      <ion-img src="../assets/img/report.png"></ion-img>
+      <ion-label>Survey</ion-label>
+    </ion-col>
+    <ion-col size="6" class="survey" (click)="openSurvey()">
+      <ion-img src="../assets/img/youtube.png"></ion-img>
+      <ion-label>Video</ion-label>
+    </ion-col>
+    <ion-col size="6" class="survey" (click)="openSurvey()">
+      <ion-img src="../assets/img/newspaper.png"></ion-img>
+      <ion-label>Article</ion-label>
+    </ion-col>
+    <ion-col size="6" class="survey" (click)="openSurvey()">
+      <ion-img src="../assets/img/console.png"></ion-img>
+      <ion-label>Game</ion-label>
+    </ion-col>
+  </ion-row>
 </ion-content>
